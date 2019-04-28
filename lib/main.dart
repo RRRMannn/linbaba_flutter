@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'model/post.dart';
 import 'widget/mydrawer.dart';
+import 'widget/mybottomnavigationbar.dart';
+import 'widget/basic.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget{
   }
 }
 
-class Home extends StatefulWidget{
+class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
@@ -64,34 +66,13 @@ class Home extends StatefulWidget{
                 itemBuilder: _listItemBuilder,
               ),
 //                Icon(Icons.local_florist,size: 120,color: Colors.yellow,),
-              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
+//              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
+              Basic(),
               Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
             ]
         ),
         drawer: MyDrawer(),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.black,                   //激活状态颜色
-          currentIndex: 0,                            //当前为第几项
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              title: Text("Explore"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              title: Text("History"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              title: Text("List"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              title: Text("My"),
-            ),
-          ],
-        ),
+        bottomNavigationBar: MyBottomNavigationBar()
 
       ),
     );
