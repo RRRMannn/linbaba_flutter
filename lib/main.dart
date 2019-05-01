@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'model/post.dart';
+import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/mybottomnavigationbar.dart';
 import 'widget/basic.dart';
@@ -65,10 +66,11 @@ class Home extends StatelessWidget{
                 itemCount: posts.length,
                 itemBuilder: _listItemBuilder,
               ),
-//                Icon(Icons.local_florist,size: 120,color: Colors.yellow,),
+//              Icon(Icons.local_florist,size: 120,color: Colors.yellow,),
 //              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
               Basic(),
-              Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
+//              Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
+              Layout(),
             ]
         ),
         drawer: MyDrawer(),
