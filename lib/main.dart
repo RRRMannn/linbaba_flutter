@@ -5,6 +5,7 @@ import 'widget/mydrawer.dart';
 import 'widget/mybottomnavigationbar.dart';
 import 'widget/basic.dart';
 import 'widget/view.dart';
+import 'widget/sliver.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,7 +73,7 @@ class Home extends StatelessWidget{
 //              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
               Basic(),
 //              Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
-              Layout(),
+              SliverDemo(),
 //              Icon(Icons.view_quilt,size: 120,color: Colors.yellow,),
               View(),
             ]
