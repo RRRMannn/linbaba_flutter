@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:linbaba_flutter/main.dart';
+
+int currentIndex=0;
 
 class MyBottomNavigationBar extends StatefulWidget{
   @override
@@ -10,11 +13,11 @@ class MyBottomNavigationBar extends StatefulWidget{
 }
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
-  int _currentIndex=0;
 
   void _onTapHandler(int index){
     setState(() {
-      _currentIndex=index;
+      currentIndex=index;
+      debugPrint("$currentIndex");
     });
   }
 
@@ -24,7 +27,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>{
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       fixedColor: Colors.black,                   //激活状态颜色
-      currentIndex: _currentIndex,                            //当前为第几项
+      currentIndex: currentIndex,                            //当前为第几项
       onTap: _onTapHandler,
       items: [
         BottomNavigationBarItem(
