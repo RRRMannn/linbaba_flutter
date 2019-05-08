@@ -8,6 +8,7 @@ import 'widget/sliver.dart';
 import 'widget/navigator.dart';
 import 'widget/post_show.dart';
 import 'widget/form.dart';
+import 'widget/components.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,11 +22,12 @@ class MyApp extends StatelessWidget {
         "/": (context) => NavigatorDemo(),
         '/Home': (context) => Home(),
         '/Form':(context)=>FormDemo(),
+        '/MCs':(context)=>MaterialComponents(),
         '/About': (context) => Page(
               title: "About",
             )
       },
-      initialRoute: "/Form", //初始页面，相当于home
+      initialRoute: "/MCs", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
