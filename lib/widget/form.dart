@@ -5,6 +5,11 @@ class FormDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("FormDemo"),
+        elevation: 0,
+      ),
       body: ThemeDemo(),
     );
   }

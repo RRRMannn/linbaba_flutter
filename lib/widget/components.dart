@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:linbaba_flutter/widget/buttons.dart';
 import 'package:linbaba_flutter/widget/floatingbutton.dart';
 import 'package:linbaba_flutter/widget/popupmenubutton.dart';
+import 'package:linbaba_flutter/widget/form.dart';
+import 'package:linbaba_flutter/widget/checkbox.dart';
+import 'package:linbaba_flutter/widget/radio.dart';
+import 'package:linbaba_flutter/widget/switch.dart';
+import 'package:linbaba_flutter/widget/slider.dart';
+import 'package:linbaba_flutter/widget/datetime.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
@@ -15,6 +21,30 @@ class MaterialComponents extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "DateTime",
+            page: DateTimeDemo(),
+          ),
+          ListItem(
+            title: "Slider",
+            page: SliderDemo(),
+          ),
+          ListItem(
+            title: "Switch",
+            page: SwitchDemo(),
+          ),
+          ListItem(
+            title: "Radio",
+            page: RadioDemo(),
+          ),
+          ListItem(
+            title: "Checkbox",
+            page: CheckboxDemo(),
+          ),
+          ListItem(
+            title: "Form",
+            page: FormDemo(),
+          ),
           ListItem(
             title: "PopupMenuButton",
             page: PopupMenuButtonDemo(),
