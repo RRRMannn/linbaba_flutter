@@ -31,6 +31,7 @@ class PopupMenuButtonDemoState extends State<PopupMenuButtonDemo>{
               children: <Widget>[
                 Text(_curentValue),
                 PopupMenuButton(
+                  icon: Icon(Icons.arrow_drop_down),
                   onSelected: (value){
                     print(value);
                     setState(() {

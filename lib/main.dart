@@ -9,6 +9,12 @@ import 'widget/navigator.dart';
 import 'widget/post_show.dart';
 import 'widget/form.dart';
 import 'widget/components.dart';
+import 'widget/dialog/simpledialog.dart';
+import 'widget/dialog/alertdialog.dart';
+import 'widget/dialog/bottomsheet.dart';
+import 'widget/dialog/snackbar.dart';
+import 'package:linbaba_flutter/widget/dialog/expansionpanel.dart';
+import 'package:linbaba_flutter/widget/MDC/chip.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +26,12 @@ class MyApp extends StatelessWidget {
 //      debugShowCheckedModeBanner: false,              //隐藏debug标志
       routes: {
         "/": (context) => NavigatorDemo(),
+        "/SimpleDialog" : (context) => SimpleDialogDemo(),
+        "/AlertDialog" : (context) => AlertDialogDemo(),
+        "/BottomSheet" : (context) => BottomSheetDemo(),
+        "/SnackBar" : (context) => SnackBarDemo(),
+        "/ExpansionPanel" : (context) => ExpansionPanelDemo(),
+        "/Chip" : (context) => chipDemo(),
         '/Home': (context) => Home(),
         '/Form':(context)=>FormDemo(),
         '/MCs':(context)=>MaterialComponents(),
@@ -27,7 +39,7 @@ class MyApp extends StatelessWidget {
               title: "About",
             )
       },
-      initialRoute: "/MCs", //初始页面，相当于home
+      initialRoute: "/Chip", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,

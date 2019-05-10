@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:linbaba_flutter/widget/buttons.dart';
-import 'package:linbaba_flutter/widget/floatingbutton.dart';
-import 'package:linbaba_flutter/widget/popupmenubutton.dart';
+import 'package:linbaba_flutter/widget/button/buttons.dart';
+import 'package:linbaba_flutter/widget/button/floatingbutton.dart';
+import 'package:linbaba_flutter/widget/button/popupmenubutton.dart';
 import 'package:linbaba_flutter/widget/form.dart';
-import 'package:linbaba_flutter/widget/checkbox.dart';
-import 'package:linbaba_flutter/widget/radio.dart';
-import 'package:linbaba_flutter/widget/switch.dart';
-import 'package:linbaba_flutter/widget/slider.dart';
-import 'package:linbaba_flutter/widget/datetime.dart';
+import 'package:linbaba_flutter/widget/selector/checkbox.dart';
+import 'package:linbaba_flutter/widget/selector/radio.dart';
+import 'package:linbaba_flutter/widget/selector/switch.dart';
+import 'package:linbaba_flutter/widget/selector/slider.dart';
+import 'package:linbaba_flutter/widget/selector/datetime.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
