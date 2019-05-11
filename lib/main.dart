@@ -13,8 +13,13 @@ import 'widget/dialog/simpledialog.dart';
 import 'widget/dialog/alertdialog.dart';
 import 'widget/dialog/bottomsheet.dart';
 import 'widget/dialog/snackbar.dart';
-import 'package:linbaba_flutter/widget/dialog/expansionpanel.dart';
-import 'package:linbaba_flutter/widget/MDC/chip.dart';
+import 'widget/dialog/expansionpanel.dart';
+import 'widget/MDC/chip.dart';
+import 'widget/MDC/datatable.dart';
+import 'widget/MDC/paginateddatatable.dart';
+import 'widget/MDC/card.dart';
+import 'widget/MDC/stepper.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -32,6 +37,10 @@ class MyApp extends StatelessWidget {
         "/SnackBar" : (context) => SnackBarDemo(),
         "/ExpansionPanel" : (context) => ExpansionPanelDemo(),
         "/Chip" : (context) => chipDemo(),
+        "/DataTable" : (context) => DataTableDemo(),
+        "/PaginatedDataTable" : (context) => PaginatedDataTableDemo(),
+        "/Card" : (context) => CardDemo(),
+        "/Stepper" : (context) => StepperDemo(),
         '/Home': (context) => Home(),
         '/Form':(context)=>FormDemo(),
         '/MCs':(context)=>MaterialComponents(),
@@ -39,7 +48,7 @@ class MyApp extends StatelessWidget {
               title: "About",
             )
       },
-      initialRoute: "/Chip", //初始页面，相当于home
+      initialRoute: "/Stepper", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
