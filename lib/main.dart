@@ -3,6 +3,7 @@ import 'model/post.dart';
 import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/basic.dart';
+import 'widget/state/statemanagement.dart';
 import 'widget/view.dart';
 import 'widget/sliver.dart';
 import 'widget/navigator.dart';
@@ -20,7 +21,6 @@ import 'widget/MDC/paginateddatatable.dart';
 import 'widget/MDC/card.dart';
 import 'widget/MDC/stepper.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -31,24 +31,25 @@ class MyApp extends StatelessWidget {
 //      debugShowCheckedModeBanner: false,              //隐藏debug标志
       routes: {
         "/": (context) => NavigatorDemo(),
-        "/SimpleDialog" : (context) => SimpleDialogDemo(),
-        "/AlertDialog" : (context) => AlertDialogDemo(),
-        "/BottomSheet" : (context) => BottomSheetDemo(),
-        "/SnackBar" : (context) => SnackBarDemo(),
-        "/ExpansionPanel" : (context) => ExpansionPanelDemo(),
-        "/Chip" : (context) => chipDemo(),
-        "/DataTable" : (context) => DataTableDemo(),
-        "/PaginatedDataTable" : (context) => PaginatedDataTableDemo(),
-        "/Card" : (context) => CardDemo(),
-        "/Stepper" : (context) => StepperDemo(),
         '/Home': (context) => Home(),
-        '/Form':(context)=>FormDemo(),
-        '/MCs':(context)=>MaterialComponents(),
         '/About': (context) => Page(
               title: "About",
-            )
+            ),
+        '/Form': (context) => FormDemo(),
+        '/MCs': (context) => MaterialComponents(),
+        "/SimpleDialog": (context) => SimpleDialogDemo(),
+        "/AlertDialog": (context) => AlertDialogDemo(),
+        "/BottomSheet": (context) => BottomSheetDemo(),
+        "/SnackBar": (context) => SnackBarDemo(),
+        "/ExpansionPanel": (context) => ExpansionPanelDemo(),
+        "/Chip": (context) => chipDemo(),
+        "/DataTable": (context) => DataTableDemo(),
+        "/PaginatedDataTable": (context) => PaginatedDataTableDemo(),
+        "/Card": (context) => CardDemo(),
+        "/Stepper": (context) => StepperDemo(),
+        "/StateManagement" : (context) => StateManagementDemo(),
       },
-      initialRoute: "/Stepper", //初始页面，相当于home
+      initialRoute: "/StateManagement", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
@@ -60,25 +61,122 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return Homestate();
   }
-
 }
 
-class Homestate extends State<Home>{
-
+class Homestate extends State<Home> {
   int currentIndex;
   Widget _currentWidget;
 
   @override
   void initState() {
-    currentIndex=0;
-    _currentWidget= TabBarView(//TabbarView
+    currentIndex = 0;
+    _currentWidget = TabBarView(//TabbarView
         children: <Widget>[
+      ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: _listItemBuilder,
+      ),
+//              Icon(Icons.local_florist,size: 120,color: Colors.yellow,),
+//              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
+      Basic(),
+//              Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
+      SliverDemo(),
+//              Icon(Icons.view_quilt,size: 120,color: Colors.yellow,),
+      View(),
+    ]);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return DefaultTabController(
+      //TabbarController
+      length: 4,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text("林爸爸"),
+          elevation: 10,
+          //阴影大小
+//            leading: IconButton(
+//              icon: Icon(Icons.menu),
+//              tooltip: "抽屉",
+//              onPressed: ()=>debugPrint("测试抽屉！"),
+//            ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              tooltip: "搜索",
+              onPressed: () => debugPrint("测试搜索！"),
+            ),
+          ],
+          bottom: TabBar(
+              //Tabbar
+              unselectedLabelColor: Colors.black38,
+              //未选择颜色
+              indicatorColor: Colors.black54,
+              //下方提示线
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 2.0,
+              tabs: <Widget>[
+                Tab(
+                  icon: Icon(Icons.local_florist),
+                ),
+                Tab(
+                  icon: Icon(Icons.change_history),
+                ),
+                Tab(
+                  icon: Icon(Icons.directions_bike),
+                ),
+                Tab(
+                  icon: Icon(Icons.view_quilt),
+                ),
+              ]),
+        ),
+        body: _currentWidget,
+        drawer: MyDrawer(),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          fixedColor: Colors.black,
+          //激活状态颜色
+          currentIndex: currentIndex,
+          //当前为第几项
+          onTap: _onTapHandler,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore),
+              title: Text("Explore"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              title: Text("History"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text("List"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text("My"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void changePage() {
+    setState(() {
+      debugPrint("$currentIndex");
+      if (currentIndex == 0) {
+        _currentWidget = TabBarView(//TabbarView
+            children: <Widget>[
           ListView.builder(
             itemCount: posts.length,
             itemBuilder: _listItemBuilder,
@@ -91,110 +189,12 @@ class Homestate extends State<Home>{
 //              Icon(Icons.view_quilt,size: 120,color: Colors.yellow,),
           View(),
         ]);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return DefaultTabController(
-      //TabbarController
-      length: 4,
-      child: Scaffold(
-          backgroundColor: Colors.grey[100],
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text("林爸爸"),
-            elevation: 10,
-            //阴影大小
-//            leading: IconButton(
-//              icon: Icon(Icons.menu),
-//              tooltip: "抽屉",
-//              onPressed: ()=>debugPrint("测试抽屉！"),
-//            ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.search),
-                tooltip: "搜索",
-                onPressed: () => debugPrint("测试搜索！"),
-              ),
-            ],
-            bottom: TabBar(
-              //Tabbar
-                unselectedLabelColor: Colors.black38,
-                //未选择颜色
-                indicatorColor: Colors.black54,
-                //下方提示线
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 2.0,
-                tabs: <Widget>[
-                  Tab(
-                    icon: Icon(Icons.local_florist),
-                  ),
-                  Tab(
-                    icon: Icon(Icons.change_history),
-                  ),
-                  Tab(
-                    icon: Icon(Icons.directions_bike),
-                  ),
-                  Tab(
-                    icon: Icon(Icons.view_quilt),
-                  ),
-                ]),
-          ),
-          body:_currentWidget,
-          drawer: MyDrawer(),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            fixedColor: Colors.black,                   //激活状态颜色
-            currentIndex: currentIndex,                            //当前为第几项
-            onTap: _onTapHandler,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.explore),
-                title: Text("Explore"),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.history),
-                title: Text("History"),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                title: Text("List"),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                title: Text("My"),
-              ),
-            ],
-          ),
-      ),
-    );
-  }
-
-  void changePage(){
-    setState(() {
-      debugPrint("$currentIndex");
-      if(currentIndex==0){
-        _currentWidget=TabBarView(//TabbarView
-            children: <Widget>[
-              ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: _listItemBuilder,
-              ),
-//              Icon(Icons.local_florist,size: 120,color: Colors.yellow,),
-//              Icon(Icons.change_history,size: 120,color: Colors.yellow,),
-              Basic(),
-//              Icon(Icons.directions_bike,size: 120,color: Colors.yellow,),
-              SliverDemo(),
-//              Icon(Icons.view_quilt,size: 120,color: Colors.yellow,),
-              View(),
-            ]);
-      }else if(currentIndex==1){
-        _currentWidget=Basic();
-      }else if(currentIndex==2){
-        _currentWidget=SliverDemo();
-      }else if(currentIndex==3){
-        _currentWidget=View();
+      } else if (currentIndex == 1) {
+        _currentWidget = Basic();
+      } else if (currentIndex == 2) {
+        _currentWidget = SliverDemo();
+      } else if (currentIndex == 3) {
+        _currentWidget = View();
       }
     });
   }
@@ -229,23 +229,26 @@ class Homestate extends State<Home>{
             ),
             Positioned.fill(
                 child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    splashColor: Colors.white.withOpacity(0.3),
-                    highlightColor: Colors.white.withOpacity(0.1),
-                    onTap: () {
+              color: Colors.transparent,
+              child: InkWell(
+                splashColor: Colors.white.withOpacity(0.3),
+                highlightColor: Colors.white.withOpacity(0.1),
+                onTap: () {
 //                debugPrint("TAP");
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PostShow(post: posts[index],)));
-                    },
-                  ),
-                ))
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PostShow(
+                            post: posts[index],
+                          )));
+                },
+              ),
+            ))
           ],
         ));
   }
 
   void _onTapHandler(int index) {
     setState(() {
-      currentIndex=index;
+      currentIndex = index;
       debugPrint("$currentIndex");
       changePage();
     });
