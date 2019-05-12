@@ -3,6 +3,7 @@ import 'model/post.dart';
 import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/basic.dart';
+import 'widget/rxdart/rxdart.dart';
 import 'widget/state/statemanagement.dart';
 import 'widget/stream/stream.dart';
 import 'widget/view.dart';
@@ -50,8 +51,9 @@ class MyApp extends StatelessWidget {
         "/Stepper": (context) => StepperDemo(),
         "/StateManagement" : (context) => StateManagementDemo(),
         "/Stream" : (context) => StreamDemo(),
+        "/RxDart" : (context) => RxDartDemo(),
       },
-      initialRoute: "/Stream", //初始页面，相当于home
+      initialRoute: "/RxDart", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
