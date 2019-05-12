@@ -4,6 +4,7 @@ import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/basic.dart';
 import 'widget/state/statemanagement.dart';
+import 'widget/stream/stream.dart';
 import 'widget/view.dart';
 import 'widget/sliver.dart';
 import 'widget/navigator.dart';
@@ -48,8 +49,9 @@ class MyApp extends StatelessWidget {
         "/Card": (context) => CardDemo(),
         "/Stepper": (context) => StepperDemo(),
         "/StateManagement" : (context) => StateManagementDemo(),
+        "/Stream" : (context) => StreamDemo(),
       },
-      initialRoute: "/StateManagement", //初始页面，相当于home
+      initialRoute: "/Stream", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
