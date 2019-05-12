@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'model/post.dart';
+import 'widget/bloc/bloc.dart';
 import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/basic.dart';
@@ -52,8 +53,9 @@ class MyApp extends StatelessWidget {
         "/StateManagement" : (context) => StateManagementDemo(),
         "/Stream" : (context) => StreamDemo(),
         "/RxDart" : (context) => RxDartDemo(),
+        "/Bloc" : (context) => BlocDemo(),
       },
-      initialRoute: "/RxDart", //初始页面，相当于home
+      initialRoute: "/Bloc", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
