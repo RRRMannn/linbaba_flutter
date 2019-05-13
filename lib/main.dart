@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'model/post.dart';
 import 'widget/bloc/bloc.dart';
+import 'widget/http/http.dart';
 import 'widget/layout.dart';
 import 'widget/mydrawer.dart';
 import 'widget/basic.dart';
@@ -54,8 +55,9 @@ class MyApp extends StatelessWidget {
         "/Stream" : (context) => StreamDemo(),
         "/RxDart" : (context) => RxDartDemo(),
         "/Bloc" : (context) => BlocDemo(),
+        "/Http" : (context) => HttpDemo(),
       },
-      initialRoute: "/Bloc", //初始页面，相当于home
+      initialRoute: "/Http", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,

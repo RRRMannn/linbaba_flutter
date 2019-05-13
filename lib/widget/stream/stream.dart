@@ -44,8 +44,8 @@ class StreamDemo extends StatelessWidget {
 //            StreamBuilder(                //stream数据流出后自动调用setState()
 //              stream: _streamDemo.stream,
 //              initialData: "...",         //初始显示数据
-//              builder: (context,snaphost){
-//                return Text("${snaphost.data}");
+//              builder: (context,snapshot){
+//                return Text("${snapshot.data}");
 //              },
 //            ),
 //            Row(
@@ -195,8 +195,8 @@ class StreamDemoHome extends StatelessWidget {
             StreamBuilder(                //stream数据流出后自动调用setState()
               stream: _streamDemo.stream,
               initialData: "...",         //初始显示数据
-              builder: (context,snaphost){
-                return Text("${snaphost.data}");
+              builder: (context,snapshot){
+                return Text("${snapshot.data}");
               },
             ),
             Row(
