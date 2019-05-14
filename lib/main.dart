@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'model/post.dart';
+import 'widget/animation/animation.dart';
 import 'widget/bloc/bloc.dart';
 import 'widget/http/http.dart';
 import 'widget/layout.dart';
@@ -56,8 +57,9 @@ class MyApp extends StatelessWidget {
         "/RxDart" : (context) => RxDartDemo(),
         "/Bloc" : (context) => BlocDemo(),
         "/Http" : (context) => HttpDemo(),
+        "/Animation" : (context) => AnimationDemo(),
       },
-      initialRoute: "/Http", //初始页面，相当于home
+      initialRoute: "/Animation", //初始页面，相当于home
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Colors.white10,
